@@ -1,103 +1,276 @@
-/* General Styles */
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  max-width: 900px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background: #f5f9fc;
-  color: #222;
+  font-family: 'Inter', sans-serif;
+  background-color: #f9fafb;
+  color: #2c2c2c;
   line-height: 1.6;
-  box-shadow: 0 0 15px rgba(0,0,0,0.05);
-  border-radius: 12px;
+  scroll-behavior: smooth;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
 }
 
 /* Header */
-header {
-  text-align: center;
-  margin-bottom: 3rem;
-  color: #05445E;
+.header {
+  background-color: #0d6efd;
+  color: white;
+  padding: 1.5rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
 }
 
-h1 {
-  font-size: 2.8rem;
-  margin-bottom: 0.2rem;
+.header .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header h1 {
   font-weight: 700;
-  letter-spacing: 1.2px;
+  font-size: 2rem;
 }
 
-p {
-  font-size: 1.2rem;
-  color: #189AB4;
-  font-weight: 600;
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
-/* Section Titles */
-h2 {
-  border-left: 6px solid #189AB4;
-  padding-left: 12px;
-  color: #05445E;
-  margin-bottom: 1rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-/* Skill Categories */
-.skill-category {
-  margin-bottom: 2rem;
-}
-
-.skill-category h3 {
-  color: #07575B;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  border-bottom: 2px solid #75E6DA;
-  padding-bottom: 0.3rem;
-}
-
-/* Lists */
-ul {
-  list-style-type: disc;
-  margin-left: 2rem;
-  color: #333;
-  font-size: 1rem;
-}
-
-/* Links */
-a {
-  color: #189AB4;
+.navbar a {
+  color: white;
   text-decoration: none;
   font-weight: 600;
+  font-size: 1rem;
+  position: relative;
+  padding: 0.25rem 0;
+  transition: color 0.3s ease;
 }
 
-a:hover {
-  text-decoration: underline;
+.navbar a:hover,
+.navbar a:focus,
+.navbar a.active {
+  color: #ffd633;
+}
+
+.btn-resume {
+  background-color: #ffd633;
+  color: #0d6efd;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-weight: 700;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-resume:hover,
+.btn-resume:focus {
+  background-color: #ffc107;
+  color: #003580;
+  outline: none;
 }
 
 /* Sections */
-section {
-  margin-bottom: 3rem;
-  background: #ffffff;
-  padding: 1.8rem 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgb(24 154 180 / 0.1);
+.section {
+  margin-bottom: 3.5rem;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
 }
 
-/* Footer */
-footer {
-  text-align: center;
-  font-size: 0.9rem;
-  color: #777;
-  padding-top: 1rem;
-  border-top: 1px solid #e2e8f0;
+.section:nth-child(odd) {
+  animation-delay: 0.2s;
 }
 
+.section:nth-child(even) {
+  animation-delay: 0.4s;
+}
 
-.header-container {
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  border-bottom: 3px solid #0d6efd;
+  padding-bottom: 0.3rem;
+  max-width: fit-content;
+  color: #0d6efd;
+}
+
+/* About */
+#about p {
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+/* Skills */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.skill-category h3 {
+  color: #0d6efd;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.skill-category ul {
+  list-style: disc inside;
+  color: #555;
+  line-height: 1.4;
+}
+
+/* Projects */
+.project {
+  margin-bottom: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.project-toggle {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: #0d6efd;
+  color: white;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px 8px 0 0;
+  transition: background-color 0.3s ease;
+}
+
+.project-toggle:hover,
+.project-toggle:focus {
+  background-color: #0b5ed7;
+  outline: none;
+}
+
+.project-toggle i {
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.project-desc {
+  padding: 1rem 1.5rem;
+  color: #333;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-top: 1px solid #ddd;
+  background-color: #fafafa;
+  border-radius: 0 0 8px 8px;
+}
+
+/* Contact */
+.contact-list {
+  list-style: none;
+  font-size: 1.05rem;
+  color: #444;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  max-width: 400px;
+}
+
+.contact-list li {
   display: flex;
   align-items: center;
-  gap: 20px; /* space between image and text */
-  padding: 1rem 0;
+  gap: 0.7rem;
+}
+
+.contact-list a {
+  color: #0d6efd;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.contact-list a:hover,
+.contact-list a:focus {
+  color: #0056b3;
+  outline: none;
+}
+
+/* Back to Top Button */
+#topBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: none;
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  padding: 0.7rem 0.85rem;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.4rem;
+  box-shadow: 0 4px 10px rgba(13, 110, 253, 0.5);
+  transition: background-color 0.3s ease;
+  z-index: 1000;
+}
+
+#topBtn:hover,
+#topBtn:focus {
+  background-color: #0046b8;
+  outline: none;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .header .container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .navbar ul {
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+
+  .btn-resume {
+    align-self: flex-start;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-list {
+    max-width: 100%;
+  }
 }
 
 .profile-photo {
