@@ -11,7 +11,6 @@ body {
   max-width: 900px;
   margin: 2rem auto;
   padding: 2rem;
-  /* subtle gradient background */
   background: linear-gradient(135deg, #e0f7fa, #ffffff);
   color: #2c2c2c;
   line-height: 1.6;
@@ -67,13 +66,13 @@ body {
   color: #1976d2;
 }
 
-.header-text p {
-  margin-top: 0.2rem;
-  font-size: 1.2rem;
-  color: #ffd633;
+/* Job title styled in uniform blue */
+.job-title {
+  color: #0d6efd; /* uniform blue */
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
+  margin-top: 0.2rem;
 }
 
 /* Sections */
@@ -90,32 +89,30 @@ section:hover {
   box-shadow: 0 15px 30px rgba(24, 154, 180, 0.3);
 }
 
-/* Section Titles */
+/* Section Titles - underline removed */
 h2 {
-  border-left: 8px solid #189AB4;
-  padding-left: 16px;
+  border-left: none;
+  border-bottom: none;
+  padding-left: 0;
   margin-bottom: 1.2rem;
   font-size: 2.4rem;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  border-bottom: 4px solid #0d6efd;
-  padding-bottom: 0.4rem;
-  max-width: fit-content;
   color: #0d6efd;
   text-shadow: 1px 1px 2px rgba(13,110,253,0.15);
 }
 
-/* Skill Categories */
+/* Skill Categories - underline removed */
 .skill-category {
   margin-bottom: 2.5rem;
 }
 
 .skill-category h3 {
+  border-bottom: none;
+  padding-bottom: 0;
   color: #0d6efd;
   margin-bottom: 0.7rem;
-  border-bottom: 3px solid #75E6DA;
-  padding-bottom: 0.4rem;
   font-weight: 900;
   font-size: 1.4rem;
   letter-spacing: 0.05em;
@@ -132,6 +129,8 @@ h2 {
 ul {
   list-style-type: disc;
   margin-left: 2.3rem;
+  margin-bottom: 1rem;
+  color: #444;
 }
 
 /* Links */
@@ -159,6 +158,23 @@ footer {
   font-weight: 600;
 }
 
+/* Fade-in animation for Experience section */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#experience {
+  animation: fadeInUp 1s ease forwards;
+  opacity: 0;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
   .header-container {
@@ -171,8 +187,9 @@ footer {
   .header-text h1 {
     font-size: 2rem;
   }
-  .header-text p {
+  .job-title {
     font-size: 1rem;
+    letter-spacing: 0.1em;
   }
   section {
     padding: 1.5rem 1.8rem;
